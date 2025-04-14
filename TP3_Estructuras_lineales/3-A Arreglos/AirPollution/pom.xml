@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>ar.edu.itba.eda.tp3.ej5</groupId>
+	<artifactId>Pollution</artifactId>
+	<version>1</version>
+
+	<properties>
+		<maven.compiler.source>22</maven.compiler.source>
+		<maven.compiler.target>22</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<!-- Para incluir las dependencias en el jar -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<!-- Para incluir las dependencias en el jar -->
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+							<archive>
+								<!-- Para incluir cual es el nombre de la clase a correr -->
+								<manifest>
+									<mainClass>Main</mainClass>
+								</manifest>
+							</archive>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<!-- dependencias que deben estar para que funcione el poyecto-->
+	<dependencies>
+		<!-- Para implementar Index Generics -->
+		<dependency>
+			<groupId>ar.edu.itba.eda.tp3</groupId>
+			<artifactId>IndexGenerics</artifactId>
+			<version>2</version>
+		</dependency>
+		<!-- Para leer el csv -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>1.14.0</version>
+		</dependency>
+		<dependency>
+			<groupId>ar.aedu.itba.eda.tp3</groupId>
+			<artifactId>IndexWithArray</artifactId>
+			<version>1</version>
+			<scope>system</scope>
+			<systemPath>/Users/bautistapessagno/Desktop/ITBA/EDA/TPs/TP3_Estructuras_lineales/IndexWithArray-1.jar</systemPath>
+		</dependency>
+
+	</dependencies>
+
+</project>
