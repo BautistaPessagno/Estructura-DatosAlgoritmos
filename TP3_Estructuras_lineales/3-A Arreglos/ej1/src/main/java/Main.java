@@ -73,6 +73,8 @@ public class Main {
 
         System.out.println( myIndex.getMin() );
 
+        System.out.println("Pruebas de range");
+
 
         int[] rta= myIndex.range(50, 100, false, false); // [80]
 

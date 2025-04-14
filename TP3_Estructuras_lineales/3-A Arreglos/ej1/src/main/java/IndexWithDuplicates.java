@@ -35,7 +35,8 @@ public class IndexWithDuplicates implements IndexService {
         int r = size-1;
         while(l <= r){
             int m = l + (r-l)/2;
-            if(indexes[m] == key){return m;
+            if(indexes[m] == key){
+                return m;
             }
             if(indexes[m] < key){
                 l = m+1;
@@ -90,15 +91,10 @@ public class IndexWithDuplicates implements IndexService {
         if(!search(rightKey) || !search(leftKey) || leftKey >= rightKey){
             return new int[0];
         }
-        int l = getClosestPosition(leftKey);
-        int r = getClosestPosition(rightKey);
+        int l = leftIncluded? (getClosestPosition(leftKey) - occurrences(leftKey) + 1): (getClosestPosition(leftKey) + 1) ;
+        int r = rightIncluded? (getClosestPosition(rightKey) + occurrences(rightKey) - 1 ) : (getClosestPosition(rightKey) - 1);
 
-        if(!leftIncluded){
-            l++;
-        }
-        if(!rightIncluded){
-            r--;
-        }
+        System.out.println("l: " + l + " r: " + r);
         int[] res = new int[r-l+1];
         int newSize = 0;
         while(l <= r){
