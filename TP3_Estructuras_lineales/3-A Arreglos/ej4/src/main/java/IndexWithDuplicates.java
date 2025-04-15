@@ -38,20 +38,19 @@ public class IndexWithDuplicates<T extends Comparable<? super T>> implements Ind
     }
 
     public int getClosestPosition(T key){
-        int l = 0;
-        int r = size-1;
-        while(l <= r){
-            int m = l + (r-l)/2;
-            if(indexes[m] == key){return m;
-            }
+        int l = 0, r = size;
+        while(l < r){
+            int m = l + (r - l) / 2;
             if(indexes[m].compareTo(key) < 0){
-                l = m+1;
-            }else{
-                r = m-1;
+                r = m;
+            }
+            else{
+                l = m + 1;
             }
         }
         return l;
     }
+
 
     // inserta el key en pos correcta. Crece automáticamente de a chunks.
     // si el valor proporcionado es null, ignora el pedido.
@@ -92,18 +91,14 @@ public class IndexWithDuplicates<T extends Comparable<? super T>> implements Ind
         size--;
     }
 
-    // devuelve la cantidad de apariciones de la clave especificada.
+    // devuelve la cantidad de apariciones de la clave especificada
     @Override
     public int occurrences(T key){
-        int pos = getClosestPosition(key), count = 0;
-        boolean dif = false;
-        while(!dif && pos < size){
-            if(indexes[pos].compareTo(key) == 0){
-                count++;
-                pos++;
-            }else{
-                dif = true;
-            }
+        int i = getClosestPosition(key);
+        int count = 0;
+        while(indexes[i] != key){
+            count++;
+            i++;
         }
         return count;
     }
@@ -115,28 +110,21 @@ public class IndexWithDuplicates<T extends Comparable<? super T>> implements Ind
     @SuppressWarnings("unchecked")
     @Override
     public T[] range(T leftKey, T rightKey, boolean leftIncluded, boolean rightIncluded){
-        if(!search(rightKey) || !search(leftKey) || leftKey.compareTo(rightKey) >= 0){
-            return (T[]) Array.newInstance(theClass, 0);
-        }
-        int l = getClosestPosition(leftKey);
-        int r = getClosestPosition(rightKey);
 
-        if(!leftIncluded){
-            l++;
-        }
-        if(!rightIncluded){
-            r--;
-        }
-        T[] res = (T[]) Array.newInstance(theClass, r-l+1);
+        int l = leftIncluded? getClosestPosition(leftKey) : (getClosestPosition(leftKey) + occurrences(leftKey)) ;
+        int r = rightIncluded? (getClosestPosition(rightKey) + occurrences(rightKey)) : getClosestPosition(rightKey);
+
+        T[] res = (l < r)? (T[])Array.newInstance(theClass, (r-l)) : (T[])(Array.newInstance(theClass, 0));
         int newSize = 0;
-        while(l <= r){
+        while(l < r){
             res[newSize++] = indexes[l++];
         }
         System.out.print("[ ");
-        for(int i = 0; i < newSize; i++) System.out.print(res[i] + " ");
+        for(int i = 0; i < res.length; i++) System.out.print(res[i] + " ");
         System.out.println("]");
         return res;
     }
+
 
 
     // imprime el contenido del índice ordenado por su key
