@@ -96,9 +96,6 @@ public class IndexWithDuplicates implements IndexService {
         while(l < r){
             res[newSize++] = indexes[l++];
         }
-        while(newSize < (allocsize)){
-            res[newSize++] = indexes[l++];
-        }
         System.out.print("[ ");
         for(int i = 0; i < res.length; i++) System.out.print(res[i] + " ");
         System.out.println("]");
