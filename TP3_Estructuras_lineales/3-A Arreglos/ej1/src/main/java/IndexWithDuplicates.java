@@ -29,24 +29,6 @@ public class IndexWithDuplicates implements IndexService {
         int i = getClosestPosition(key);
         return indexes[i] == key;
     }
-
-    public int getClosestPosition(int key){
-        int l = 0;
-        int r = size-1;
-        while(l <= r){
-            int m = l + (r-l)/2;
-            if(indexes[m] == key){
-                return m;
-            }
-            if(indexes[m] < key){
-                l = m+1;
-            }else{
-                r = m-1;
-            }
-        }
-        return l;
-    }
-
     // inserta el key en pos correcta. Crece autom�ticamente de a chunks
 
     public void insert(int key){
@@ -76,10 +58,26 @@ public class IndexWithDuplicates implements IndexService {
         }
         size--;
     }
+
     // devuelve la cantidad de apariciones de la clave especificada
     public int occurrences(int key){
         return getClosestPosition(key+1) - getClosestPosition(key-1);
     }
+
+    public int getClosestPosition(int key){
+        int l = 0, r = size;
+        while(l < r){
+            int m = l + (r - l) / 2;
+            if(indexes[m] >= key){
+                r = m;
+            }
+            else{
+                l = m + 1;
+            }
+        }
+        return l;
+    }
+
 
 
     // devuelve un nuevo arreglo ordenado con los elementos que pertenecen al intervalo dado por
@@ -88,19 +86,21 @@ public class IndexWithDuplicates implements IndexService {
     // Si no hay matching devuelve arreglo de length 0
     @Override
     public int[] range(int leftKey, int rightKey, boolean leftIncluded, boolean rightIncluded){
-        if(!search(rightKey) || !search(leftKey) || leftKey >= rightKey){
-            return new int[0];
-        }
-        int l = leftIncluded? (getClosestPosition(leftKey) - occurrences(leftKey) + 1): (getClosestPosition(leftKey) + 1) ;
-        int r = rightIncluded? (getClosestPosition(rightKey) + occurrences(rightKey) - 1 ) : (getClosestPosition(rightKey) - 1);
 
-        int[] res = new int[r-l+1];
+        int l = leftIncluded? getClosestPosition(leftKey) : getClosestPosition(leftKey+ 1) ;
+        int r = rightIncluded? (getClosestPosition(rightKey)+occurrences(rightKey)) : getClosestPosition(rightKey);
+        int allocsize = r-l;
+
+        int[] res = (l < r)?(new int[allocsize]) : (new int[0]);
         int newSize = 0;
-        while(l <= r){
+        while(l < r){
+            res[newSize++] = indexes[l++];
+        }
+        while(newSize < (allocsize)){
             res[newSize++] = indexes[l++];
         }
         System.out.print("[ ");
-        for(int i = 0; i < newSize; i++) System.out.print(res[i] + " ");
+        for(int i = 0; i < res.length; i++) System.out.print(res[i] + " ");
         System.out.println("]");
         return res;
     }
