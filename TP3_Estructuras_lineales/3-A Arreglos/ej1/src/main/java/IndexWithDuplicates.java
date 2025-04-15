@@ -89,9 +89,8 @@ public class IndexWithDuplicates implements IndexService {
 
         int l = leftIncluded? getClosestPosition(leftKey) : getClosestPosition(leftKey+ 1) ;
         int r = rightIncluded? (getClosestPosition(rightKey)+occurrences(rightKey)) : getClosestPosition(rightKey);
-        int allocsize = r-l;
 
-        int[] res = (l < r)?(new int[allocsize]) : (new int[0]);
+        int[] res = (l < r)?(new int[r-l]) : (new int[0]);
         int newSize = 0;
         while(l < r){
             res[newSize++] = indexes[l++];
