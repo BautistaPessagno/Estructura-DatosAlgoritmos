@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class Tester {
-    //private SortedLinkedList<Integer> list;
-    private SortedListWithHeader<Integer> list;
+      private SortedLinkedList<Integer> list;
+//    private SortedListWithHeader<Integer> list;
 
     @BeforeAll
     static void start() {
@@ -16,8 +16,8 @@ public class Tester {
 
     @BeforeEach
     void setUp(){
-        //this.list = new SortedLinkedList<>();
-        this.list = new SortedListWithHeader<>();
+        this.list = new SortedLinkedList<>();
+//        this.list = new SortedListWithHeader<>();
     }
 
 
@@ -42,18 +42,6 @@ public class Tester {
         assertEquals(true, list.insert(10));
         assertEquals(true, list.insert(5));
     }
-
-    @Test
-    public void testFind() {
-        assertEquals(false, list.find(1));
-        assertEquals(true, list.insert(1));
-        assertEquals(true, list.insert(10));
-        assertEquals(true, list.insert(5));
-        assertEquals(true, list.find(1));
-        assertEquals(true, list.find(10));
-        assertEquals(true, list.find(5));
-    }
-
     @Test
     public void testInsertRec() {
         try {
@@ -75,6 +63,41 @@ public class Tester {
         assertEquals(true, list.insert2(10));
         assertEquals(true, list.insert2(5));
     }
+
+    @Test
+    public void testInsert3() {
+        try {
+            list.insert3(null);
+            assertNotEquals(0, list.size());
+        }catch (IllegalArgumentException e){
+            // exception lanzada
+            // si la agarra esta perfecto
+        }
+        boolean ans = list.insert3(1);
+        assertEquals(true, ans);
+        try {
+            list.insert3(1);
+            assertNotEquals(2, list.size());
+        }catch (IllegalArgumentException e){
+            // exception lanzada
+            // si la agarra esta perfecto
+        }
+        assertEquals(true, list.insert3(10));
+        assertEquals(true, list.insert3(5));
+    }
+
+
+    @Test
+    public void testFind() {
+        assertEquals(false, list.find(1));
+        assertEquals(true, list.insert(1));
+        assertEquals(true, list.insert(10));
+        assertEquals(true, list.insert(5));
+        assertEquals(true, list.find(1));
+        assertEquals(true, list.find(10));
+        assertEquals(true, list.find(5));
+    }
+
 
     @Test
     public void testRemove() {

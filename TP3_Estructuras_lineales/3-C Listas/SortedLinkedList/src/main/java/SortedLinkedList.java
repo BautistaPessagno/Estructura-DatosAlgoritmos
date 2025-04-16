@@ -53,8 +53,7 @@ public class SortedLinkedList<T extends Comparable<? super T>> implements Sorted
 		root= insertRec(data, root, rta);
 		return rta[0];
 	}
-	
-	
+
 	private Node insertRec(T data, Node current, boolean[] rta) {
 		if(current !=null && current.data.compareTo(data) == 0) {
 			rta[0]= false;
@@ -67,29 +66,20 @@ public class SortedLinkedList<T extends Comparable<? super T>> implements Sorted
 		Node aux= new Node(data, current);
 		rta[0]= true;
 		return aux;
-
-		private Node insertRec(T data, Node current, boolean[] rta) {
-			if(current !=null && current.data.compareTo(data) == 0) {
-				rta[0]= false;
-				return current;
-			}
-			if(current!=null && current.data.compareTo(data) < 0) {
-				current.next= insertRec(data, current.next, rta);
-				return current;
-			}
-			Node aux= new Node(data, current);
-			rta[0]= true;
-			return aux;
-
-
-		}
 	}
 	
 	// insert resuelto delegando al nodo
 	public boolean insert3(T data) {
-
+		if(data == null)
+			throw new IllegalArgumentException("data cannot be null");
+		if(root == null) {
+			root = new Node(data);
+			return true;
+		}
+		boolean[] rta = new boolean[1];
+		root = root.insert(data,rta);
 		// COMPLETAR 
-		return true;
+		return rta[0];
 	}
 	
 	@Override
@@ -273,6 +263,27 @@ public class SortedLinkedList<T extends Comparable<? super T>> implements Sorted
 		private Node(T data, Node next) {
 			this.data= data;
 			this.next= next;
+		}
+
+		private Node(T data) {
+			this.data= data;
+			this.next= null;
+		}
+
+		public Node insert(T data, boolean[] rta){
+			if(this.data.compareTo(data) == 0) {
+				rta[0]= false;
+				return this;
+			}
+
+			if (this.data.compareTo(data) < 0 && this.next != null) {
+				this.next = this.next.insert(data, rta);
+				return this;
+			}
+
+			Node aux= new Node(data, this.next);
+			rta[0]= true;
+			return aux;
 		}
 		
 	}
