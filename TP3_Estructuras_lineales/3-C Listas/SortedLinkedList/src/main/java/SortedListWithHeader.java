@@ -270,6 +270,27 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
             this.next= next;
         }
 
+        private Node(T data) {
+            this.data= data;
+            this.next= null;
+        }
+
+        public Node insert(T data, boolean[] rta){
+            if(this.data.compareTo(data) == 0) {
+                rta[0]= false;
+                return this;
+            }
+
+            if (this.data.compareTo(data) < 0 && this.next != null) {
+                this.next = this.next.insert(data, rta);
+                return this;
+            }
+
+            Node aux= new Node(data, this.next);
+            rta[0]= true;
+            return aux;
+        }
+
     }
 
 
