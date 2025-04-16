@@ -6,7 +6,15 @@ import java.util.function.Consumer;
 public class SortedLinkedList<T extends Comparable<? super T>> implements SortedListService<T>{
 
 	private Node root;
-	
+
+	public Node getRoot() {
+		return root;
+	}
+
+	public void setRoot(Node root) {
+		this.root = root;
+	}
+
 	// insert resuelto todo en la clase SortedLinkedList, iterativo
 	@Override
 	public boolean insert(T data) {

@@ -79,6 +79,8 @@ SortedLinkedList<String> l = new SortedLinkedList<>();
             System.out.println(s);
         }
 
+//  Prueba de SortedListWithHeaderAllowsRemoves
+
 
     }
 

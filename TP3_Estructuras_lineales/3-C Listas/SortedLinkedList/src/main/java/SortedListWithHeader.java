@@ -7,6 +7,18 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
     private int size = 0;
     private Node header = null;
 
+    public Node getRoot() {
+        return root;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public Node getHeader() {
+        return header;
+    }
+
     // insert resuelto todo en la clase SortedLinkedList, iterativo
     @Override
     public boolean insert(T data) {
@@ -269,9 +281,9 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
         };
     }
 
-    private final class Node {
-        private T data;
-        private Node next;
+    final class Node {
+        T data;
+        Node next;
 
         private Node(T data, Node next) {
             this.data= data;
