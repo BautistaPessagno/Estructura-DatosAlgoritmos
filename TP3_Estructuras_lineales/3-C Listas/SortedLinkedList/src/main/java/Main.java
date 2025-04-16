@@ -51,33 +51,35 @@ SortedLinkedList<String> l = new SortedLinkedList<>();
 
 //PRUEBA DE SortedListWithHeader
 
-//        SortedLinkedList<String> l = new SortedLinkedListWithHeader<>();
-//        System.out.println(l.insert("hola"));
-//        System.out.println(l.insert("tal"));
-//        System.out.println(l.insert("ah"));
-//        System.out.println(l.insert("veo"));
-//        System.out.println(l.insert("bio"));
-//        System.out.println(l.insert("tito"));
-//        System.out.println(l.insert("hola"));
-//        System.out.println(l.insert("aca"));
-//
-//// la lista deberia contener: aca  ah  bio hola tal  tito  veo
-//        for (String s : l) {
-//            System.out.println(s);
-//        }
-//
-//        System.out.println("\n");
-//
-//        System.out.println(l.remove("rrr"));
-//        System.out.println(l.remove("tito"));
-//        System.out.println(l.insert("bauti"));
-//        System.out.printf("\n");;
-//
-//        for (String s : l) {
-//            System.out.println(s);
-//        }
-//
-//
+        System.out.println("---------SortedListWithHeader-------------");
+
+        SortedListService<String> lh = new SortedListWithHeader<>();
+        System.out.println(lh.insert("hola"));
+        System.out.println(lh.insert("tal"));
+        System.out.println(lh.insert("ah"));
+        System.out.println(lh.insert("veo"));
+        System.out.println(lh.insert("bio"));
+        System.out.println(lh.insert("tito"));
+        System.out.println(lh.insert("hola"));
+        System.out.println(lh.insert("aca"));
+
+// la lista deberia contener: aca  ah  bio hola tal  tito  veo
+        for (String s : lh) {
+            System.out.println(s);
+        }
+
+        System.out.println("\n");
+
+        System.out.println(lh.remove("rrr"));
+        System.out.println(lh.remove("tito"));
+        System.out.println(lh.insert("bauti"));
+        System.out.printf("\n");;
+
+        for (String s : lh) {
+            System.out.println(s);
+        }
+
+
     }
 
 }
