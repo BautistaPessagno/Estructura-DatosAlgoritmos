@@ -56,24 +56,33 @@ public class SortedLinkedList<T extends Comparable<? super T>> implements Sorted
 	
 	
 	private Node insertRec(T data, Node current, boolean[] rta) {
-		if(current==null) {
-			Node aux= new Node(data, null	);
-			rta[0]= true;
-			return aux;
-		}
-		if(current.data.compareTo(data) == 0) {
+		if(current !=null && current.data.compareTo(data) == 0) {
 			rta[0]= false;
 			return current;
 		}
-		if(current.data.compareTo(data) > 0) {
+		if(current!=null && current.data.compareTo(data) < 0) {
+			current.next= insertRec(data, current.next, rta);
+			return current;
+		}
+		Node aux= new Node(data, current);
+		rta[0]= true;
+		return aux;
+
+		private Node insertRec(T data, Node current, boolean[] rta) {
+			if(current !=null && current.data.compareTo(data) == 0) {
+				rta[0]= false;
+				return current;
+			}
+			if(current!=null && current.data.compareTo(data) < 0) {
+				current.next= insertRec(data, current.next, rta);
+				return current;
+			}
 			Node aux= new Node(data, current);
 			rta[0]= true;
 			return aux;
+
+
 		}
-		current.next= insertRec(data, current.next, rta);
-		return current;
-
-
 	}
 	
 	// insert resuelto delegando al nodo
@@ -83,15 +92,10 @@ public class SortedLinkedList<T extends Comparable<? super T>> implements Sorted
 		return true;
 	}
 	
-	
-
-	
-	
 	@Override
 	public boolean find(T data) {
 		return getPos(data) != -1;
 	}
-	
 	
 	// delete resuelto todo en la clase SortedLinkedList, iterativo
 	@Override
@@ -117,7 +121,6 @@ public class SortedLinkedList<T extends Comparable<? super T>> implements Sorted
 		return false;
 	}
 	
-	
 	// delete resuelto todo en la clase SortedLinkedList, recursivo
 	public boolean remove2(T data) {
 		if(data == null)
@@ -126,7 +129,6 @@ public class SortedLinkedList<T extends Comparable<? super T>> implements Sorted
 		root = removeRec(data, root, rta);
 		return rta[0];
 	}
-	
 
 	public Node removeRec(T data, Node current, boolean[] rta) {
 		if(current==null || current.data.compareTo(data) > 0) {
@@ -141,15 +143,12 @@ public class SortedLinkedList<T extends Comparable<? super T>> implements Sorted
 		return current;
 	}
 
-
 	// delete resuelto delegando al nodo
 //	@Override
 	public boolean remove3(T data) {
 		// completar
 		return true;
 	}
-	
-	
 	
 	@Override
 	public boolean isEmpty() {

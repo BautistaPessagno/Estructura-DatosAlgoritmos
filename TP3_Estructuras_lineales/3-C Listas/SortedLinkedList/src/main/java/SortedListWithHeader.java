@@ -64,23 +64,18 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
 
 
     private Node insertRec(T data, Node current, boolean[] rta) {
-        if(current==null) {
-            Node aux= new Node(data, null	);
-            header = aux;
-            rta[0]= true;
-            return aux;
-        }
-        if(current.data.compareTo(data) == 0) {
+        if(current !=null && current.data.compareTo(data) == 0) {
             rta[0]= false;
             return current;
         }
-        if(current.data.compareTo(data) > 0) {
-            Node aux= new Node(data, current);
-            rta[0]= true;
-            return aux;
+        if(current!=null && current.data.compareTo(data) < 0) {
+            current.next= insertRec(data, current.next, rta);
+            return current;
         }
-        current.next= insertRec(data, current.next, rta);
-        return current;
+        Node aux= new Node(data, current);
+        header = (current==null)?aux:header;
+        rta[0]= true;
+        return aux;
 
 
     }
