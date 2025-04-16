@@ -29,6 +29,7 @@ public class SortedLinkedListWithHeaderAllowsRemoves<T extends Comparable<? supe
             @Override
             public void remove(){
                 current = current.next;
+                prev = current.next;
             }
         };
     }
