@@ -23,7 +23,6 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
         size--;
     }
 
-
     // insert resuelto todo en la clase SortedLinkedList, iterativo
     @Override
     public boolean insert(T data) {
@@ -65,7 +64,6 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
         return true;
     }
 
-
     // insert resuelto todo en la clase SortedLinkedList, recursivo
     public boolean insert2(T data) {
         if (data == null)
@@ -78,7 +76,6 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
         }
         return rta[0];
     }
-
 
     private Node insertRec(T data, Node current, boolean[] rta) {
         if(current !=null && current.data.compareTo(data) == 0) {
@@ -112,15 +109,10 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
         return rta[0];
     }
 
-
-
-
-
     @Override
     public boolean find(T data) {
         return getPos(data) != -1;
     }
-
 
     // delete resuelto todo en la clase SortedLinkedList, iterativo
     @Override
@@ -153,7 +145,6 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
         return false;
     }
 
-
     // delete resuelto todo en la clase SortedLinkedList, recursivo
     public boolean remove2(T data) {
         if(data == null)
@@ -165,7 +156,6 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
         }
         return rta[0];
     }
-
 
     public Node removeRec(T data, Node current, boolean[] rta) {
         if(current==null || current.data.compareTo(data) > 0) {
@@ -180,15 +170,12 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
         return current;
     }
 
-
     // delete resuelto delegando al nodo
 //	@Override
     public boolean remove3(T data) {
         // completar
         return true;
     }
-
-
 
     @Override
     public boolean isEmpty() {
@@ -200,7 +187,6 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
         return size;
     }
 
-
     @Override
     public void dump() {
         Node current = root;
@@ -211,7 +197,6 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
             current= current.next;
         }
     }
-
 
     @Override
     public boolean equals(Object other) {
@@ -258,7 +243,6 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
 
         return root.data;
     }
-
 
     @Override
     public T getMax() {
@@ -343,7 +327,4 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
         }
 
     }
-
-
-
 }
