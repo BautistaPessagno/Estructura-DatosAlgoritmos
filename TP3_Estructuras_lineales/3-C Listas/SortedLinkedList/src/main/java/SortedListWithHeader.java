@@ -82,9 +82,17 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
 
     // insert resuelto delegando al nodo
     public boolean insert3(T data) {
-
+        if(data == null)
+            throw new IllegalArgumentException("data cannot be null");
+        if(root == null) {
+            root = new Node(data);
+            return true;
+        }
+        boolean[] rta = new boolean[2];
+        root = root.insert(data,rta);
         // COMPLETAR
-        return true;
+        header = rta[1]?header.next:header;
+        return rta[0];
     }
 
 
@@ -283,10 +291,11 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
 
             if (this.data.compareTo(data) < 0 && this.next != null) {
                 this.next = this.next.insert(data, rta);
+
                 return this;
             }
-
             Node aux= new Node(data, this.next);
+            rta[1] = (this==null);
             rta[0]= true;
             return aux;
         }

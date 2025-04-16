@@ -5,9 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class Tester {
+public class SortedLinkedListTester {
       private SortedLinkedList<Integer> list;
-//    private SortedListWithHeader<Integer> list;
 
     @BeforeAll
     static void start() {
@@ -17,7 +16,6 @@ public class Tester {
     @BeforeEach
     void setUp(){
         this.list = new SortedLinkedList<>();
-//        this.list = new SortedListWithHeader<>();
     }
 
 
