@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -80,6 +82,34 @@ SortedLinkedList<String> l = new SortedLinkedList<>();
         }
 
 //  Prueba de SortedListWithHeaderAllowsRemoves
+        System.out.println("-----------SorotedListWithHeaderAllowsRemove---------");
+
+        SortedListService<Integer> a = new SortedListWithHeader<>();
+        a.insert(50);a.insert(30);a.insert(40);a.insert(10);
+        a.insert(20);a.insert(60);a.insert(70);a.insert(80);
+        a.dump();
+
+        System.out.println("Tamaño= "+a.size());
+        System.out.println("Min= "+a.getMin());
+        System.out.println("Max= "+a.getMax());
+
+        System.out.println("Con Iterador");
+
+        for(Iterator<Integer> it = a.iterator();it.hasNext();){
+                Integer i = it.next();
+                if(i.equals(80) || i.equals(10) || i.equals(40)){
+                        System.out.println("Deleting "+i);
+                        it.remove();
+                }
+                else
+                        System.out.println("Intacto "+i);
+        }
+
+        a.dump();
+        System.out.println("Tamaño= "+a.size());
+        System.out.println("Min= "+a.getMin());
+        System.out.println("Max= "+a.getMax());
+
 
 
     }

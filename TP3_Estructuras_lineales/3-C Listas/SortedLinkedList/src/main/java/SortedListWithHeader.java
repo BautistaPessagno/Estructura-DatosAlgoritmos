@@ -19,6 +19,11 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
         return header;
     }
 
+    public void decSize(){
+        size--;
+    }
+
+
     // insert resuelto todo en la clase SortedLinkedList, iterativo
     @Override
     public boolean insert(T data) {
@@ -264,21 +269,46 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
-            Node current= root;
+        return new SortedLinkedListIterator();
+    }
 
-            @Override
-            public boolean hasNext() {
-                return current != null;
-            }
+    private class SortedLinkedListIterator implements Iterator<T> {
+        private Node iter;
+        private boolean canRemove;
+        private Node prev;
+        private Node toDel;
 
-            @Override
-            public T next() {
-                T rta= current.data;
-                current= current.next;
-                return rta;
+        SortedLinkedListIterator() {
+            iter = root;
+        }
+
+        public boolean hasNext() {
+            return iter != null;
+        }
+
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
             }
-        };
+            T aux = iter.data;
+            prev = toDel;
+            toDel = iter;
+            iter = iter.next;
+            canRemove = true;
+            return aux;
+
+        }
+
+        public void remove(){
+            if (!canRemove)
+                throw new IllegalStateException();
+            canRemove=false;
+            if (toDel.equals(root))
+                root = iter;
+            else prev.next = iter;
+
+        }
+
     }
 
     final class Node {
