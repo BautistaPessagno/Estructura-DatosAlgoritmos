@@ -41,14 +41,26 @@ public class IndexWithDuplicates<T extends Comparable<? super T>> implements Ind
         int l = 0, r = size;
         while(l < r){
             int m = l + (r - l) / 2;
-            if(indexes[m].compareTo(key) < 0){
-                r = m;
+            int cmp = indexes[m].compareTo(key);
+            if(cmp >= 0){
+                r = m ;
             }
             else{
                 l = m + 1;
             }
         }
         return l;
+    }
+    // devuelve la cantidad de apariciones de la clave especificada
+    @Override
+    public int occurrences(T key){
+        int i = getClosestPosition(key);
+        int count = 0;
+        while( i < size && indexes[i] == key){
+            count++;
+            i++;
+        }
+        return count;
     }
 
 
@@ -89,18 +101,6 @@ public class IndexWithDuplicates<T extends Comparable<? super T>> implements Ind
             indexes[i] = indexes[i+1];
         }
         size--;
-    }
-
-    // devuelve la cantidad de apariciones de la clave especificada
-    @Override
-    public int occurrences(T key){
-        int i = getClosestPosition(key);
-        int count = 0;
-        while(indexes[i] != key){
-            count++;
-            i++;
-        }
-        return count;
     }
 
     // devuelve un nuevo arreglo ordenado con los elementos que pertenecen
