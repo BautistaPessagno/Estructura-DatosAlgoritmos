@@ -1,12 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        IndexParametricService<Integer>  myIndex= new IndexWithDuplicates<>(Integer.class);
-        System.out.println (myIndex.occurrences( 10 ) );  // se obtiene 0
-        myIndex.delete( 10 );  // ignora
-        System.out.println (myIndex.search( 10 ) );  // se obtiene false
-        myIndex.insert( 80 );  // almacena [80]
-        myIndex.insert( 20 );  // almacena [20, 80]
-        myIndex.insert( 80 );  // almacena [20, 80, 80]
+        IndexParametricService<String> myIndex= new IndexWithDuplicates<>(String.class);
+        System.out.println (myIndex.occurrences( "avion") );  // se obtiene 0
+        myIndex.delete( "barco");  // ignora
+        System.out.println (myIndex.search( "arbol" ) );  // se obtiene false
+        myIndex.insert( "barco" );  // almacena [80]
+        myIndex.insert( "avion" );  // almacena [20, 80]
+        myIndex.insert( "barco" );  // almacena [20, 80, 80]
 
         try{
             myIndex.initialize( null );
@@ -16,27 +16,27 @@ public class Main {
         }
 
         // sigue con lo anterior
-        System.out.println (myIndex.occurrences( 80 ) );  // se obtiene 2
+        System.out.println (myIndex.occurrences( "barco" ) );  // se obtiene 2
 
         try {
-            myIndex.initialize( new Integer[] {100, 50, 30, 50, 80, 100, 100, 30} );
+            myIndex.initialize( new String[] {"zen", "barco", "avion", "barco", "casa", "zen", "zen", "avion"} );
         }
         catch(Exception e) {
             System.out.println("Error: linea 25 (no deberia haber)");
         }
         // el índice posee [30, 30, 50, 50, 80, 100, 100, 100]
-        System.out.println( myIndex.search( 20 ));   // se obtiene false
+        System.out.println( myIndex.search( "avioneta" ));   // se obtiene false
 
 
-        System.out.println( myIndex.search( 80 ));   // se obtiene true
+        System.out.println( myIndex.search( "casa" ));   // se obtiene true
 
-        System.out.println (myIndex.occurrences( 50 ) );  // se obtiene 2
+        System.out.println (myIndex.occurrences( "barco" ) );  // se obtiene 2
 
-        myIndex.delete( 50 );
+        myIndex.delete( "barco" );
 
-        System.out.println (myIndex.occurrences( 50 ) );  // se obtiene 1
+        System.out.println (myIndex.occurrences( "barco" ) );  // se obtiene 1
 
-        myIndex= new IndexWithDuplicates<>(Integer.class);
+        myIndex= new IndexWithDuplicates<>(String.class);
 
         myIndex.sortedPrint();
 
@@ -58,7 +58,7 @@ public class Main {
 
         try
         {
-            myIndex.initialize( new Integer[] {100, 50, 30, 50, 80, 100, 100, 30} );
+            myIndex.initialize( new String[] {"zen", "barco", "avion", "barco", "casa", "zen", "zen", "avion"} );
         }
         catch(Exception e)
         {
@@ -76,35 +76,35 @@ public class Main {
         System.out.println("Pruebas de range");
 
 
-        Integer[] rta= myIndex.range(50, 100, false, false); // [80]
+        String[] rta= myIndex.range("barco", "zen", false, false); // ["casa"]
 
-        rta= myIndex.range(50, 100, true, false); // [50, 50, 80]
+        rta= myIndex.range("barco", "zen", true, false); // [barco, barco, casa]
 
-        rta= myIndex.range(50, 100, false, true); // [80, 100, 100, 100]
+        rta= myIndex.range("barco", "zen", false, true); // [casa, zen, zen, zen]
 
-        rta= myIndex.range(30, 50, true, false); // [30, 30]
+        rta= myIndex.range("avion", "barco", true, false); // [avion, avion]
 
-        rta= myIndex.range(45, 100, false, false); // [50, 50, 80]
+        rta= myIndex.range("azza", "zen", false, false); // [barco, barco, casa]
 
-        rta= myIndex.range(45, 100, true, false); // [50, 50, 80]
+        rta= myIndex.range("azzz", "zen", true, false); // [barco, barco, casa]
 
-        rta= myIndex.range(45, 100, false, true); // [50, 50, 80, 100, 100, 100]
+        rta= myIndex.range("azzz", "zen", false, true); // [barco, barco, casa, zen, zen, zen]
 
-        rta= myIndex.range(10, 50, true, false); // [30, 30]
+        rta= myIndex.range("a", "barco", true, false); // [avion, avion]
 
-        rta= myIndex.range(10, 50, false, false); // [30, 30]
+        rta= myIndex.range("a", "barco", false, false); // [avion, avino]
 
-        rta= myIndex.range(10, 20, false, false); // []
+        rta= myIndex.range("a", "aa", false, false); // []
 
-        rta= myIndex.range(47, 45, false, false); // []
+        rta= myIndex.range("ab", "abb", false, false); // []
 
-        rta= myIndex.range(120, 120, true, true); // []
+        rta= myIndex.range("zz", "zzz", true, true); // []
 
-        rta= myIndex.range(80, 80, false, false); // []
+        rta= myIndex.range("casa", "casa", false, false); // []
 
-        rta= myIndex.range(80, 81, true, false); // [80]
+        rta= myIndex.range("casa", "casaz", true, false); // [casa]
 
-        rta= myIndex.range(80, 81, false, false); // []
+        rta= myIndex.range("casa", "casaz", false, false); // []
 
 
 
