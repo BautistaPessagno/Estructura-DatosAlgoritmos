@@ -56,7 +56,7 @@ public class IndexWithDuplicates<T extends Comparable<? super T>> implements Ind
     public int occurrences(T key){
         int i = getClosestPosition(key);
         int count = 0;
-        while( i < size && indexes[i] == key){
+        while( i < size && indexes[i].compareTo(key) == 0){
             count++;
             i++;
         }
