@@ -21,7 +21,7 @@ public class EvaluatorWithVariables extends Evaluator {
 
         while (lineScanner.hasNext()) {
             String token = lineScanner.next();
-            if (token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/") || token.equals("^")) {
+            if (isOperator(token)) {
                 if (getStack().isEmpty()) {
                     throw new RuntimeException("operando with empty stack");
                 }
