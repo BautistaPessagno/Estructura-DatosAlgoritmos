@@ -1,1 +1,0 @@
-prefixDir=/Users/bautistapessagno/Desktop/ITBA/EDA/TPs/TP2_algoritmos_string/TP2-C
