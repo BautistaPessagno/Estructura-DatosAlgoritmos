@@ -18,14 +18,14 @@ public class Evaluator {
             put("+", 0);
         }};
     private final static boolean[][] precedenceMatrix =
-        {
-                {true, true, false, false, false, false, true},
-                {true, true, false, false, false, false, true},
-                {true, true, true, true, false, false, true},
-                {true, true, true ,true, false, false, true},
-                {true, true, true, true, false, false, true},
-                {false, false, false, false, false, false, false},
-        };
+            {
+                    {true, true, false, false, false, false, true},
+                    {true, true, false, false, false, false, true},
+                    {true, true, true, true, false, false, true},
+                    {true, true, true ,true, false, false, true},
+                    {true, true, true, true, false, false, true},
+                    {false, false, false, false, false, false, false},
+            };
 
     public LinkedList<Double> getStack(){
         return stack;
@@ -58,7 +58,7 @@ public class Evaluator {
 
         while (lineScanner.hasNext()) {
             String token = lineScanner.next();
-            if (token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/") || token.equals("^")){
+            if (isOperator(token)) {
                 if (stack.isEmpty()) {
                     throw new RuntimeException("operando with empty stack");
                 }
@@ -87,22 +87,22 @@ public class Evaluator {
         String ans = "";
         while (lineScanner.hasNextLine()) {
             String token = lineScanner.next();
-                if(isNumeric(token)) {
-                    ans += String.format("%s ", token);
-                }
-                else{
-                    while (!stack2.isEmpty() && getPrecedence(stack2.peek(), token)) {
-                        if(!stack2.peek().equals("(") || !stack2.peek().equals(")")) {
-                            ans += String.format("%s ", stack2.pop());
-                        }
-                        else
-                            stack2.pop();
+            if(isNumeric(token)) {
+                ans += String.format("%s ", token);
+            }
+            else{
+                while (!stack2.isEmpty() && getPrecedence(stack2.peek(), token)) {
+                    if(!stack2.peek().equals("(") || !stack2.peek().equals(")")) {
+                        ans += String.format("%s ", stack2.pop());
                     }
-                    if(!token.equals(")"))
-                        stack2.push(token);
                     else
                         stack2.pop();
                 }
+                if(!token.equals(")"))
+                    stack2.push(token);
+                else
+                    stack2.pop();
+            }
         }
         while (!stack2.isEmpty()) {
             if(!stack2.peek().equals("("))
@@ -122,6 +122,10 @@ public class Evaluator {
         }
     }
 
+
+    public boolean isOperator(String token) {
+        return token.matches("[\\+\\-\\*\\/\\^\\(\\)]");
+    }
 
     public static double operation(String exps, double op1, double op2){
         double ans;

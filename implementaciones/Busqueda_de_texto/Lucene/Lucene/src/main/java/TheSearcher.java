@@ -33,18 +33,17 @@ public class TheSearcher {
         	
         	// field of interest
         	String fieldName = "content";
-        	String queryStr= "game";
+        	String queryStr= "fly";
         	
         	Term myTerm = new Term(fieldName, queryStr);
-
 			//TermQuery -> puede encontrar game pero no ga
-        	//Query query= new TermQuery(myTerm );
+        	Query query= new TermQuery(myTerm );
 
 			//PrefixQuery -> puede encontrar game y ga
 			//Query query = new PrefixQuery(myTerm);
 
 			//TermRangeQuery -> busca por rangos
-			Query query = TermRangeQuery.newStringRange(fieldName, "gam", "gum", true, false);
+			//Query query = TermRangeQuery.newStringRange(fieldName, "gam", "gum", true, false);
         	
         	
         	// run the query

@@ -9,7 +9,6 @@ public class EvaluatorWithVariables extends Evaluator {
         this.variables = variables;
     }
 
-    @Override
     public double evaluate() {
         // uso el scanner para conseguir la expresion
         String postfija = toPostfix();

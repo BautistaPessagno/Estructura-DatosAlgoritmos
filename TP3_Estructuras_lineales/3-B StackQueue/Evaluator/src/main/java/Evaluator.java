@@ -58,7 +58,7 @@ public class Evaluator {
 
         while (lineScanner.hasNext()) {
             String token = lineScanner.next();
-            if (token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/") || token.equals("^")){
+            if (isOperator(token)) {
                 if (stack.isEmpty()) {
                     throw new RuntimeException("operando with empty stack");
                 }
@@ -122,6 +122,10 @@ public class Evaluator {
         }
     }
 
+
+    public boolean isOperator(String token) {
+        return token.matches("[\\+\\-\\*\\/\\^\\(\\)]");
+    }
 
     public static double operation(String exps, double op1, double op2){
         double ans;
