@@ -9,6 +9,7 @@ public class EvaluatorWithVariables extends Evaluator {
         this.variables = variables;
     }
 
+    @Override
     public double evaluate() {
         // uso el scanner para conseguir la expresion
         String postfija = toPostfix();
@@ -20,7 +21,7 @@ public class EvaluatorWithVariables extends Evaluator {
 
         while (lineScanner.hasNext()) {
             String token = lineScanner.next();
-            if (token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/") || token.equals("^")) {
+            if (isOperator(token)) {
                 if (getStack().isEmpty()) {
                     throw new RuntimeException("operando with empty stack");
                 }
@@ -48,7 +49,7 @@ public class EvaluatorWithVariables extends Evaluator {
 
     @Override
     public String toPostfix(){
-    //consigo el infifa
+        //consigo el infifa
         Scanner inputScanner = new Scanner(System.in).useDelimiter("\\n");
         System.out.print("Introduzca la expresion en notacion infija: ");
         String line = inputScanner.nextLine();
