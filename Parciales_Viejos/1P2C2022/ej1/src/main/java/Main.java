@@ -1,13 +1,7 @@
-
-public class Corredores {
-
-    public int[] tiemposEntre(int[] tiempos, Pedido[] p) {
-        // TODO: completar
-    }
-    
+public class Main {
     public static void main(String[] args) {
-        Corredores c = new Corredores();
 
+        Corredores c = new Corredores();
         Pedido[] pedidos = new Pedido[] {
                 new Pedido(200, 240),
                 new Pedido(180, 210),
@@ -31,19 +25,11 @@ public class Corredores {
                 285
         };
 
+
         int [] respuestas = c.tiemposEntre(tiempos, pedidos);
         for(int i=0; i< respuestas.length; i++) {
             System.out.println(respuestas[i]);
         }
 
-    }
-}
-
-class Pedido {
-    public int desde;
-    public int hasta;
-    public Pedido(int desde, int hasta) {
-        this.desde = desde;
-        this.hasta = hasta;
     }
 }
