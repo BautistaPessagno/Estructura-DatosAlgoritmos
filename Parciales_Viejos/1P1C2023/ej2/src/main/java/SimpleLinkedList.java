@@ -1,5 +1,6 @@
-public class SimpleLinkedList <T>{
+public class SimpleLinkedList <T extends Comparable<T>>{
     private Node root = null;
+    private Node last = null;
 
     public void dump() {
         Node current = root;
@@ -8,6 +9,19 @@ public class SimpleLinkedList <T>{
             // avanzo
             System.out.println(current.data);
             current= current.next;
+        }
+    }
+
+    public void insert(T data) {
+        if(data == null) {
+            throw new RuntimeException("Data is null");
+        }
+        if(root == null) {
+            root = new Node(data, null);
+            last = root;
+        } else {
+            last.next = new Node(data, null);
+            last = last.next;
         }
     }
 
