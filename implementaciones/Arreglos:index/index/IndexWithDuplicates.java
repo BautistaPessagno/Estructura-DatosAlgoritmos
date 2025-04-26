@@ -47,7 +47,6 @@ public class IndexWithDuplicates implements IndexService {
     }
 
     // borra el key si lo hay, sino lo ignora.
-    // decrece autom�ticamente de a chunks
     public void delete(int key){
         if(!search(key)){
             return;

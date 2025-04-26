@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e9ef9af-6e6e-4226-aa3b-bc51a0f694e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../ej1/src/main/java/Lista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ej1/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lista.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../implementaciones/Busqueda de Texto/Lucene/Lucene/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../implementaciones/Busqueda_de_texto/Lucene/Lucene/src/main/java/TheSearcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../implementaciones/Busqueda_de_texto/Lucene/Lucene/src/main/java/TheSearcher.java" afterDir="false" />
+    <list default="true" id="9d04f506-3974-42ef-91c0-7d37ef65952f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ej1/Primer parcial 2024.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IndexWithDuplicates.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IndexWithDuplicates.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../implementaciones/Arreglos:index/index/IndexWithDuplicates.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../implementaciones/Arreglos:index/index/IndexWithDuplicates.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,10 +19,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
-  <component name="ProjectId" id="2w8cUBNLEQmt9p80yb6Z8zTZ1KP" />
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "BautistaPessagno"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/BautistaPessagno/Estructura-DatosAlgoritmos.git",
+    "accountId": "2df6ace8-673d-4074-8f5f-2aea65c71c4b"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2wEHznnVzx1PNbH7zdRb8xl5ANR" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -30,11 +42,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "JUnit.IndexWithDuplicatesTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/bautistapessagno/Desktop/ITBA/EDA/Estructura-DatosAlgoritmos/Parciales_Viejos/1P1C2024/ej2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -49,19 +61,6 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="ej2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="ej2" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -73,13 +72,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9e9ef9af-6e6e-4226-aa3b-bc51a0f694e4" name="Changes" comment="" />
-      <created>1745426656238</created>
+      <changelist id="9d04f506-3974-42ef-91c0-7d37ef65952f" name="Changes" comment="" />
+      <created>1745600079568</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1745426656238</updated>
-      <workItem from="1745426657225" duration="31000" />
-      <workItem from="1745426707957" duration="1805000" />
+      <updated>1745600079568</updated>
+      <workItem from="1745600080607" duration="2853000" />
     </task>
     <servers />
   </component>
