@@ -1,0 +1,47 @@
+fisrt we calculate the temporal complexity of the algorithm
+
+private  Lista[] randomSplitListas( Integer nLists )
+    Lista[] ans = new Lista[nLists];
+		for(int i = 0 ; i < nLists ; ++i){
+			ans[i] = new Lista();
+		}
+		while(this.first != null) {
+			Integer randomIndex = getRandom(nLists);
+			if(ans[randomIndex].first == null){
+				ans[randomIndex].first = this.first;
+				ans[randomIndex].last = this.first;
+			}
+			else {
+				ans[randomIndex].last.next = this.first;
+				ans[randomIndex].last = ans[randomIndex].last.next;
+			}
+			this.first = this.first.next;
+			ans[randomIndex].last.next = null;
+		}
+		return ans;
+}
+
+Lista[] ans = new Lista[nLists] no ocupa tiempo tempral
+
+for(int i = 0 ; i < nLists ; ++i){
+            ans[i] = new Lista();
+}
+hace una comparacion  y una incrementacion M veces, m siendo la cantidad de listas
+tambien hace una comparacion de corte
+
+
+while(this.first != null)
+es una comparacion que hace N+1 veces, siendo N la cantidad de elementos en la lista
+dentro de la condicion del while hay una comparacion la cual se va a hacer N veces
+
+tambien necesitamos conseguir la complejidad temporal de la funcion getRandom
+Integer randomIndex = getRandom(nLists);
+la cual es O(1) ya que solo hace una comparacion y un incremento
+
+entonces la suma total de la complejidad temporal es O(N + M)
+
+T(N,M) = (N+1)+N + 2(M)+1 = 2N + 2M + 2 => O(N + M)
+
+
+
+

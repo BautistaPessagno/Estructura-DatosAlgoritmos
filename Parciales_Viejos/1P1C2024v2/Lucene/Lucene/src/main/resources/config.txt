@@ -1,0 +1,1 @@
+prefixDir=/Users/bautistapessagno/Desktop/ITBA/EDA/Estructura-DatosAlgoritmos/Parciales_Viejos/1P1C2024v2/Lucene/
