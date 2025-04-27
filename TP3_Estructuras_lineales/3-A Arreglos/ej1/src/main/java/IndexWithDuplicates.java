@@ -67,7 +67,7 @@ public class IndexWithDuplicates implements IndexService {
     public int getClosestPosition(int key){
         int l = 0, r = size;
         while(l < r){
-            int m = l + (r - l) / 2;
+            int m = (r+l) / 2;
             if(indexes[m] >= key){
                 r = m;
             }

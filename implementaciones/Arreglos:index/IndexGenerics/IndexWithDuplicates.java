@@ -40,7 +40,7 @@ public class IndexWithDuplicates<T extends Comparable<? super T>> implements Ind
     public int getClosestPosition(T key){
         int l = 0, r = size;
         while(l < r){
-            int m = l + (r - l) / 2;
+            int m = (r + l) / 2;
             int cmp = indexes[m].compareTo(key);
             if(cmp >= 0){
                 r = m ;
