@@ -4,7 +4,7 @@ public class Corredores {
     public int getClosestPosition(int key, int[] tiempos){
         int l = 0, r = tiempos.length-1;
         while(l < r){
-            int m = l + (r - l) / 2;
+            int m = (r + l)/ 2;
             if(tiempos[m] >= key){
                 r = m;
             }
