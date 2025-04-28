@@ -51,11 +51,6 @@ public class CircularLinkedList <T extends Comparable<? super T>>{
             last = newNode;
         }
 
-
-
-
-
-
         public T dequeue() {
             T ans = null;
             if(last == null)
