@@ -303,9 +303,8 @@ public class SortedLinkedList<T extends Comparable<? super T>> implements Sorted
 
 		public Node delete(T data, boolean[] rta){
 			if(this.data.compareTo(data) == 0) {
-				this.data= this.next.data;
 				rta[0]= true;
-				return this;
+				return this.next;
 			}
 
 			if (this.data.compareTo(data) < 0 && this.next != null) {

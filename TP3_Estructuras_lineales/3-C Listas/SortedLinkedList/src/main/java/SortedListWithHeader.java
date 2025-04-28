@@ -343,9 +343,8 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
                     rta[1]= true;
                 }
                 else rta[1]= false;
-                this.data= this.next.data;
                 rta[0]= true;
-                return this;
+                return this.next;
             }
 
             if (this.data.compareTo(data) < 0 && this.next != null) {
