@@ -124,6 +124,7 @@ public class SortedListWithHeaderTester {
         list.insert(5);
         assertEquals(true, list.remove3(1));
         assertEquals(false, list.find(1));
+        assertEquals(false, list.remove3(11));
     }
 
     @Test
