@@ -144,8 +144,15 @@ public class SortedLinkedList<T extends Comparable<? super T>> implements Sorted
 	// delete resuelto delegando al nodo
 //	@Override
 	public boolean remove3(T data) {
-		// completar
-		return true;
+		if(data == null)
+			throw new IllegalArgumentException("data cannot be null");
+		if(root == null) {
+			return false;
+		}
+		boolean[] rta = new boolean[1];
+		root = root.delete(data,rta);
+		// COMPLETAR
+		return rta[0];
 	}
 	
 	@Override
@@ -292,6 +299,21 @@ public class SortedLinkedList<T extends Comparable<? super T>> implements Sorted
 			Node aux= new Node(data, this.next);
 			rta[0]= true;
 			return aux;
+		}
+
+		public Node delete(T data, boolean[] rta){
+			if(this.data.compareTo(data) == 0) {
+				this.data= this.next.data;
+				rta[0]= true;
+				return this;
+			}
+
+			if (this.data.compareTo(data) < 0 && this.next != null) {
+				this.next = this.next.delete(data, rta);
+				return this;
+			}
+			rta[0]= false;
+			return this;
 		}
 		
 	}

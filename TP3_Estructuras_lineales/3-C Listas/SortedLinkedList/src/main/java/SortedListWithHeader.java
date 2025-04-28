@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -173,8 +175,17 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
     // delete resuelto delegando al nodo
 //	@Override
     public boolean remove3(T data) {
-        // completar
-        return true;
+        if(data == null)
+            throw new IllegalArgumentException("data cannot be null");
+        if(root == null) {
+            return false;
+        }
+        boolean[] rta = new boolean[2];
+        root = root.delete(data,rta, this.header);
+        if(rta[0]) {
+            size--;
+        }
+        return rta[0];
     }
 
     @Override
@@ -324,6 +335,28 @@ public class SortedListWithHeader<T extends Comparable<? super T>> implements So
             rta[1] = (this==null);
             rta[0]= true;
             return aux;
+        }
+
+        public Node delete(T data, boolean[] rta, Node header){
+            if(this.data.compareTo(data) == 0) {
+                if (this.next != null) {
+                    rta[1]= true;
+                }
+                else rta[1]= false;
+                this.data= this.next.data;
+                rta[0]= true;
+                return this;
+            }
+
+            if (this.data.compareTo(data) < 0 && this.next != null) {
+                this.next = this.next.delete(data, rta, header);
+                if (rta[1]){
+                    header = this;
+                }
+                return this;
+            }
+            rta[0]= false;
+            return this;
         }
 
     }

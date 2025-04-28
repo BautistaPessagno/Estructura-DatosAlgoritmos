@@ -117,6 +117,16 @@ public class SortedListWithHeaderTester {
     }
 
     @Test
+    public void testRemove3() {
+        assertEquals(false, list.remove3(1));
+        list.insert(1);
+        list.insert(10);
+        list.insert(5);
+        assertEquals(true, list.remove3(1));
+        assertEquals(false, list.find(1));
+    }
+
+    @Test
     public void testIsEmpty() {
         assertEquals(true, list.isEmpty());
         list.insert(1);
