@@ -19,12 +19,13 @@ public class Evaluator {
         }};
     private final static boolean[][] precedenceMatrix =
             {
-                    {true, true, false, false, false, false, true},
-                    {true, true, false, false, false, false, true},
-                    {true, true, true, true, false, false, true},
-                    {true, true, true ,true, false, false, true},
-                    {true, true, true, true, false, false, true},
-                    {false, false, false, false, false, false, false},
+                    //+     -      *     /     ^     (          )
+                    {true, true, false, false, false, false, true},//+
+                    {true, true, false, false, false, false, true},//-
+                    {true, true, true, true, false, false, true},// *
+                    {true, true, true ,true, false, false, true},// \
+                    {true, true, true, true, false, false, true},// ^
+                    {false, false, false, false, false, false, false},// (
             };
 
     public LinkedList<Double> getStack(){
@@ -91,6 +92,8 @@ public class Evaluator {
                 ans += String.format("%s ", token);
             }
             else{
+                //mientras el precedence es true saca del stack
+                //cuando el precedence es false o el stack esta vacio agrega
                 while (!stack2.isEmpty() && getPrecedence(stack2.peek(), token)) {
                     if(!stack2.peek().equals("(") || !stack2.peek().equals(")")) {
                         ans += String.format("%s ", stack2.pop());
