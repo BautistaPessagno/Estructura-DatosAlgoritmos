@@ -34,6 +34,13 @@ public class TheSearcher {
         	// field of interest
         	String fieldName = "content";
         	String queryStr= "fly";
+
+			// Crear las subconsultas para "Fly" y "Moon"
+			//BooleanQuery -> se usa para combinar varias consultas
+//			BooleanQuery.Builder booleanQuery = new BooleanQuery.Builder();
+//			booleanQuery.add(new TermQuery(myTerm1), BooleanClause.Occur.SHOULD);
+//			booleanQuery.add(new TermQuery(myTerm2), BooleanClause.Occur.SHOULD);
+//			Query query = booleanQuery.build();
         	
         	Term myTerm = new Term(fieldName, queryStr);
 			//TermQuery -> puede encontrar game pero no ga

@@ -7,6 +7,8 @@ public class Evaluator {
     private final static LinkedList<Double> stack = new LinkedList<>();
     private final static LinkedList<String> stack2 = new LinkedList<>();
 
+
+    // ver en el metodo toPostfix la explicacion de como funciona la matriz de precedencia
     private final static Map<String, Integer> mapping  = new HashMap<String,Integer>() {
         {
             put(")", 6);
@@ -91,6 +93,8 @@ public class Evaluator {
                     ans += String.format("%s ", token);
                 }
                 else{
+                    //meintras el precedence es true agrega al tope
+                    //si es false pushea al current
                     while (!stack2.isEmpty() && getPrecedence(stack2.peek(), token)) {
                         if(!stack2.peek().equals("(") || !stack2.peek().equals(")")) {
                             ans += String.format("%s ", stack2.pop());
