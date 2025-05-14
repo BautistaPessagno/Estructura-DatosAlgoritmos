@@ -81,6 +81,30 @@ public class BST<T extends Comparable<? super T>> implements BSTreeInterface<T> 
         return null;
     }
 
+    public T getCommonNode(T element1, T element2){
+        NodeTreeInterface<T> current = root;
+        while(current != null){
+            int cmp1 = current.getData().compareTo(element1);
+            int cmp2 = current.getData().compareTo(element2);
+            if(cmp1 > 0 && cmp2 > 0){
+                current = current.getLeft();
+            }
+            else if(cmp1 < 0 && cmp2 < 0){
+                current = current.getRight();
+            }
+            else
+                return current.getData();
+
+        }
+
+
+    }
+
+
+    public void getCommonNodeWithRepeat(){
+        return ;
+    }
+
     @Override
     public void delete(T myData){
         if(myData == null)
@@ -167,8 +191,8 @@ public class BST<T extends Comparable<? super T>> implements BSTreeInterface<T> 
         @Override
         public T next() {
             while (current != null) {
-                stack.push(current);
-                current = current.getLeft();
+              stack.push(current);
+              current = current.getLeft();
             }
             NodeTreeInterface<T> nodeToProcess = stack.pop();
             current = nodeToProcess.getRight();

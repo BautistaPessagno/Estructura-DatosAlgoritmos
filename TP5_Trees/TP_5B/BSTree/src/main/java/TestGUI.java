@@ -11,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
 
+import java.util.Iterator;
+
 public class TestGUI extends Application {
 
 	public static void main(String[] args) {
@@ -24,8 +26,8 @@ public class TestGUI extends Application {
 		StackPane root = new StackPane();
 		Scene scene = new Scene(root, 1300, 700);
 
-		BST<Person> myTree = createModel2();
-		GraphicsTree<Person> c = new GraphicsTree<>(myTree);
+		BST<Integer> myTree = createModel();
+		GraphicsTree<Integer> c = new GraphicsTree<>(myTree);
 		/*BST<Person> myTree = createModel2();
 		GraphicsTree<Person> c = new GraphicsTree<>(myTree);*/
 
@@ -43,6 +45,17 @@ public class TestGUI extends Application {
 	private BST<Integer> createModel() {
 		BST<Integer> myTree = new BST<>();
 		myTree = new BST<>();
+//		myTree.insert(50);
+//		myTree.insert(60);
+//		myTree.insert(80);
+//		myTree.insert(20);
+//		myTree.insert(70);
+//		myTree.insert(40);
+//		myTree.insert(44);
+//		myTree.insert(10);
+//		myTree.insert(40);
+//		myTree.delete(20);
+
 		myTree.insert(50);
 		myTree.insert(60);
 		myTree.insert(80);
@@ -51,10 +64,20 @@ public class TestGUI extends Application {
 		myTree.insert(40);
 		myTree.insert(44);
 		myTree.insert(10);
-		myTree.insert(40);
-		myTree.delete(20);
-//		myTree.delete(40);
+		myTree.insert(30);
 		myTree.inOrder();
+		System.out.println("myTree iterator by Level");
+		Iterator<Integer> iterator = myTree.iterator();
+		for (Integer i : myTree) {
+			System.out.print(i + " ");
+		}
+		System.out.println();
+
+		System.out.println("myTree iterator inorder");
+		myTree.setTraversal(BSTreeInterface.Traversal.INORDER);
+		for (Integer i : myTree) {
+			System.out.print(i + " ");
+		}
 
 		return myTree;
 	}
