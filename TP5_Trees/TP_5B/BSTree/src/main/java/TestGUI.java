@@ -24,8 +24,8 @@ public class TestGUI extends Application {
 		StackPane root = new StackPane();
 		Scene scene = new Scene(root, 1300, 700);
 
-		BST<Integer> myTree = createModel();
-		GraphicsTree<Integer> c = new GraphicsTree<>(myTree);
+		BST<Person> myTree = createModel2();
+		GraphicsTree<Person> c = new GraphicsTree<>(myTree);
 		/*BST<Person> myTree = createModel2();
 		GraphicsTree<Person> c = new GraphicsTree<>(myTree);*/
 
@@ -52,24 +52,25 @@ public class TestGUI extends Application {
 		myTree.insert(44);
 		myTree.insert(10);
 		myTree.insert(40);
+		myTree.delete(20);
 //		myTree.delete(40);
 		myTree.inOrder();
 
 		return myTree;
 	}
 
-//	private BST<Person> createModel2() {
-//		BST<Person> myTree = new BST<>();
-//		myTree = new BST<>();
-//		myTree.insert(new Person( 50, "Ana" ));
-//		myTree.insert(new Person( 60, "Juan") );
-//		myTree.insert(new Person( 80, "Sergio") );
-//		myTree.insert(new Person( 20, "Lila ") );
-//		myTree.insert(new Person( 77, "Ana") );
-//		myTree.inOrder();
-//
-//		return myTree;
-//	}
+	private BST<Person> createModel2() {
+		BST<Person> myTree = new BST<>();
+		myTree = new BST<>();
+		myTree.insert(new Person( 50, "Ana" ));
+		myTree.insert(new Person( 60, "Juan") );
+		myTree.insert(new Person( 80, "Sergio") );
+		myTree.insert(new Person( 20, "Lila ") );
+		myTree.insert(new Person( 77, "Ana") );
+		myTree.inOrder();
+
+		return myTree;
+	}
 	
 
 }

@@ -93,11 +93,12 @@ public class Node<T extends Comparable<? super T>> implements NodeTreeInterface<
 
     @SuppressWarnings("unchecked")
     public Node<T> delete(T myData){
-        if(myData.compareTo(data) < 0){
+        int c = data.compareTo(myData);
+        if(c > 0){
             if(left != null)
                 left = left.delete(myData);
         }
-        if(myData.compareTo(data) > 0){
+        else if(c < 0){
             if(right != null)
                 right = right.delete(myData);
         }
@@ -106,16 +107,15 @@ public class Node<T extends Comparable<? super T>> implements NodeTreeInterface<
                 return (Node<T>) right;
             if(right == null)
                 return (Node<T>) left;
-            data = (T)right.findlowest();
-            right = right.delete(data);
-            return this;
+            this.data = (T)findlowest(right);
+            right = right.delete(this.data);
         }
 
         return this;
     }
 
-    public T findlowest(){
-        Node<T> current = this;
+    public T findlowest(Node<T> node){
+        Node<T> current = node;
         while(current.left != null){
             current = current.left;
         }
