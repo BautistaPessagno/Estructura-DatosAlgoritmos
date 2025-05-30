@@ -30,6 +30,16 @@ public class Multi<V,E> extends AdjacencyListGraph<V,E> {
 			adjListDst.add(new InternalEdge(theEdge, aVertex));
 		}
 	}
+
+	@Override
+	public DijkstraPath<V,E> dijsktra(V source) {
+		throw new RuntimeException(Messages.getString("dijkstraNotForMulti"));
+	}
+
+	@Override
+	public void printAllPaths(V start, V end) {
+		throw new RuntimeException(Messages.getString("printAllPathsNotDefinedForMulti"));
+	}
 	
 	
 }

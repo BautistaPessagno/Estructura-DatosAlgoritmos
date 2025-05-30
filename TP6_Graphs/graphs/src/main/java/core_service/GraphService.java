@@ -109,6 +109,8 @@ public interface GraphService<V,E> {
 	
 	// only for simple graph/digraph
 	// multi: throw exception
-//	public DijkstraPath<V,E> dijsktra(V source);
+	public DijkstraPath<V,E> dijsktra(V source);
+
+	public void printAllPaths(V start, V end);
 	
 }

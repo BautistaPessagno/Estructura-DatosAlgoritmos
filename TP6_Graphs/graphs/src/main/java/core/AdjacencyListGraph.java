@@ -16,7 +16,7 @@ abstract public class AdjacencyListGraph<V, E> implements GraphService<V, E> {
 
 	private boolean isSimple;
 	protected boolean isDirected;
-	private boolean acceptSelfLoop;
+	protected boolean acceptSelfLoop;
 	private boolean isWeighted;
 	protected String type;
 	
