@@ -105,6 +105,8 @@ public class OpenHashing<K, V> implements IndexParametricService<K, V>{
 
         int i = hash(key);
 
+        if( lookup[i % lookup.length] == null) // no existia la zona de overflow
+            return null;
         for (Slot<K, V> slot : lookup[i % lookup.length]) {
             if (slot.key.equals(key))
                 return slot.value;
@@ -170,6 +172,35 @@ public class OpenHashing<K, V> implements IndexParametricService<K, V>{
         public String toString() {
             return String.format("(key=%s, value=%s)", key, value );
         }
+    }
+
+    public static void main(String[] args) {
+        OpenHashing<Integer, Integer> myHash = new OpenHashing<>(x -> x);
+        myHash.insertOrUpdate(10, 1);
+        myHash.insertOrUpdate(20, 2);
+        myHash.insertOrUpdate(10, 3);
+        myHash.insertOrUpdate(30, 4);
+        myHash.insertOrUpdate(35, 5);
+        myHash.insertOrUpdate(40, 6);
+        myHash.insertOrUpdate(45, 6);
+        myHash.insertOrUpdate(45, 8); // update
+        System.out.println("antes del update");
+        myHash.dump();
+        //al agregar mas elementos, se duplica el tamaño de la tabla
+        myHash.insertOrUpdate(50, 7);
+        myHash.insertOrUpdate(55, 7);
+        myHash.insertOrUpdate(55, 9); // update
+        myHash.insertOrUpdate(58, 10);
+        myHash.insertOrUpdate(59, 11);
+        myHash.insertOrUpdate(60, 8);
+        myHash.insertOrUpdate(65, 8);
+        myHash.insertOrUpdate(70, 9);
+        myHash.insertOrUpdate(82, 10);
+        myHash.insertOrUpdate(97, 11);
+        System.out.println(myHash.find(5)); // null
+        System.out.println(myHash.find(10)); // 3
+        System.out.println("despues del update");
+        myHash.dump();
     }
 
 }
