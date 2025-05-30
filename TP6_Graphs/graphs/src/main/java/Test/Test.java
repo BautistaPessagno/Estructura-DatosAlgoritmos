@@ -88,6 +88,8 @@ public class Test {
             d.addEdge('Z', 'K', new WeightedEdge(17));
             d.addEdge('K', 'A', new WeightedEdge(19));
             DijkstraPath<Character, WeightedEdge> pathRta = d.dijsktra('A');
+            System.out.println("All paths from A to D:");
+            d.printAllPaths('A', 'D');
             System.out.println(pathRta);
         }
     }
