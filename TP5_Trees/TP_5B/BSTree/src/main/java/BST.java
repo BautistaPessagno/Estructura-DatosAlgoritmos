@@ -96,7 +96,7 @@ public class BST<T extends Comparable<? super T>> implements BSTreeInterface<T> 
                 return current.getData();
 
         }
-
+        return null;
 
     }
 

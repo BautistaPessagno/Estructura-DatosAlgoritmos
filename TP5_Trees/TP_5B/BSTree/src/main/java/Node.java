@@ -107,8 +107,8 @@ public class Node<T extends Comparable<? super T>> implements NodeTreeInterface<
                 return (Node<T>) right;
             if(right == null)
                 return (Node<T>) left;
-            this.data = (T)findlowest(right);
-            right = right.delete(this.data);
+            this.data = (T)findlowest(left);
+            left = left.delete(this.data);
         }
 
         return this;
@@ -116,8 +116,8 @@ public class Node<T extends Comparable<? super T>> implements NodeTreeInterface<
 
     public T findlowest(Node<T> node){
         Node<T> current = node;
-        while(current.left != null){
-            current = current.left;
+        while(current.right != null){
+            current = current.right;
         }
         return current.data;
     }
