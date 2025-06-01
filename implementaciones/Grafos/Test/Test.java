@@ -74,24 +74,22 @@ public class Test {
 
 
             System.out.println("Dijkstra Path:");
-            GraphService<Character, WeightedEdge> d =  GraphFactory.create(GraphService.Multiplicity.SIMPLE, GraphService.EdgeMode.UNDIRECTED, GraphService.SelfLoop.NO, GraphService.Weight.YES, GraphService.Storage.SPARSE);
-            d.addEdge('S', 'A', new WeightedEdge(5));
-            d.addEdge('A', 'G', new WeightedEdge(4));
-            d.addEdge('S', 'G', new WeightedEdge(5));
-            d.addEdge('S', 'E', new WeightedEdge(4));
-            d.addEdge('S', 'B', new WeightedEdge(7));
-            d.addEdge('B', 'F', new WeightedEdge(8));
-            d.addEdge('E', 'F', new WeightedEdge(8));
-            d.addEdge('F', 'C', new WeightedEdge(11));
-            d.addEdge('B', 'C', new WeightedEdge(9));
-            d.addEdge('C', 'D', new WeightedEdge(7));
-            d.addEdge('E', 'D', new WeightedEdge(8));
-            d.addEdge('E', 'C', new WeightedEdge(9));
-            System.out.println("Dijsktra graph:");
-            DijkstraPath<Character, WeightedEdge> pathRta = d.dijsktra('S');
-            System.out.println(pathRta);
+            GraphService<Character, WeightedEdge> d =  GraphFactory.create(GraphService.Multiplicity.SIMPLE, GraphService.EdgeMode.DIRECTED, GraphService.SelfLoop.NO, GraphService.Weight.YES, GraphService.Storage.SPARSE);
+            d.addEdge('A', 'B', new WeightedEdge(10));
+            d.addEdge('A', 'C', new WeightedEdge(3));
+            d.addEdge('B', 'C', new WeightedEdge(1));
+            d.addEdge('B', 'D', new WeightedEdge(2));
+            d.addEdge('C', 'A', new WeightedEdge(1));
+            d.addEdge('C', 'B', new WeightedEdge(4));
+            d.addEdge('C', 'D', new WeightedEdge(8));
+            d.addEdge('C', 'E', new WeightedEdge(2));
+            d.addEdge('D', 'E', new WeightedEdge(7));
+            d.addEdge('E', 'D', new WeightedEdge(9));
+            d.addEdge('Z', 'K', new WeightedEdge(17));
+            d.addEdge('K', 'A', new WeightedEdge(19));
+            DijkstraPath<Character, WeightedEdge> pathRta = d.dijsktra('A');
             System.out.println("All paths from A to D:");
-            d.printAllPaths('S', 'D');
-
+            d.printAllPaths('A', 'D');
+            System.out.println(pathRta);
         }
     }
