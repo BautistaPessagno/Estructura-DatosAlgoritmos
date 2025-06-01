@@ -65,8 +65,6 @@ public class TestGUI extends Application {
 		myTree.insert(44);
 		myTree.insert(10);
 		myTree.insert(30);
-		myTree.delete(20);
-		myTree.delete(40);
 		myTree.inOrder();
 		System.out.println("myTree iterator by Level");
 		Iterator<Integer> iterator = myTree.iterator();

@@ -214,7 +214,8 @@ public class BST<T extends Comparable<? super T>> implements BSTreeInterface<T> 
 
         myTree.printByLevels();
 
-
+        myTree.delete(80);
+        myTree.delete(10);
 
         myTree.printByLevels();
 

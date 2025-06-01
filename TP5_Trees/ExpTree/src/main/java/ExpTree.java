@@ -52,7 +52,7 @@ public class ExpTree implements ExpressionService {
 		postorder();
 		System.out.println("\nEval: " + eval());
 	}
-	
+
 	
 	static final class Node {
 		private String data;
